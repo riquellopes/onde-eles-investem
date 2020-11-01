@@ -17,3 +17,9 @@ clean:
 
 coveralls:
 	${COVERALLS}
+
+crawl:
+	@scrapy crawl candidatos
+
+run:
+	@streamlit run app.py
