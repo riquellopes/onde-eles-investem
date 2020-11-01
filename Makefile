@@ -6,10 +6,9 @@ COVERALLS=.venv/bin/coveralls
 
 
 venv:
-	virtualenv .venv
+	virtualenv .venv --python=python3
 
 setup:venv
-	${PIP} install -U pip
 	${PIP} install -r requirements_dev.txt
 
 clean:
