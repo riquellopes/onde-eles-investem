@@ -3,6 +3,8 @@ PIP=.venv/bin/pip
 PYTEST=.venv/bin/pytest
 PYTHON=.venv/bin/python
 COVERALLS=.venv/bin/coveralls
+SCRAPY=.venv/bin/scrapy
+STREAMLIT=.venv/bin/streamlit
 
 
 venv:
@@ -18,7 +20,7 @@ coveralls:
 	${COVERALLS}
 
 crawl:
-	@scrapy crawl candidatos
+	${SCRAPY} crawl candidatos
 
 run:
-	@streamlit run app.py
+	${STREAMLIT} run app.py
