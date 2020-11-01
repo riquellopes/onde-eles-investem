@@ -20,7 +20,9 @@ coveralls:
 	${COVERALLS}
 
 crawl:
-	${SCRAPY} crawl candidatos
+	@docker-compose run scrapper scrapy crawl candidatos
 
 run:
 	${STREAMLIT} run app.py
+up:
+	@docker-compose up -d

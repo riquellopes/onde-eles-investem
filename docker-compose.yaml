@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  mongo:
+    image: mongo
+    container_name: oei_mongodb
+  scrapper:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: oei_scrapper
+    depends_on:
+      - mongo
+    volumes:
+      - .:/app
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: oei_app
+    depends_on:
+      - mongo
+    ports: 
+      - 8501:8501
+    volumes:
+      - .:/app
+    entrypoint: "streamlit run app.py"
