@@ -8,6 +8,7 @@ services:
       context: .
       dockerfile: docker/Dockerfile
     container_name: oei_scrapper
+    env_file: .env
     depends_on:
       - mongo
     volumes:
@@ -17,6 +18,7 @@ services:
       context: .
       dockerfile: docker/Dockerfile
     container_name: oei_app
+    env_file: .env
     depends_on:
       - mongo
     ports: 

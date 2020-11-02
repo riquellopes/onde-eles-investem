@@ -7,11 +7,17 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+from decouple import config
+
+
 BOT_NAME = 'scrapper'
 
 SPIDER_MODULES = ['scrapper.spiders']
 NEWSPIDER_MODULE = 'scrapper.spiders'
 
+# Mongo Settings
+MONGO_URI = config("MONGO_URI")
+MONGO_DATABASE = config("MONGO_DATABASE", default="oei")
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'scrapper (+http://www.yourdomain.com)'
@@ -62,9 +68,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'scrapper.pipelines.ScrapperPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'scrapper.pipelines.MongoPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
