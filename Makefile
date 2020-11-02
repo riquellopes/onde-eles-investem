@@ -24,5 +24,9 @@ crawl:
 
 run:
 	${STREAMLIT} run app.py
+
 up:
 	@docker-compose up -d
+
+build:
+	docker-compose build
